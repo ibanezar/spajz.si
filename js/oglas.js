@@ -90,8 +90,49 @@
 
   // Kontakt: samo za prijavljene (telefon in e-naslov vrne funkcija v bazi).
   const seja = await spajzAuth.seja();
+  const naPrijavo = 'prijava.html?naprej=' + encodeURIComponent('oglas.html?id=' + oglas.id);
+  const lastnik = seja && seja.user.id === oglas.user_id;
+
+  // Prijava neprimernega oglasa (ne za lastnika)
+  if (!lastnik) {
+    $('prijava-oglasa').hidden = false;
+    if (!seja) {
+      $('prijava-neprijavljen').hidden = false;
+      $('prijava-neprijavljen').querySelector('a').href = naPrijavo;
+    } else {
+      $('obrazec-prijava').hidden = false;
+      $('obrazec-prijava').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const gumb = e.target.querySelector('button');
+        gumb.disabled = true;
+        const opomba = $('prijava-opomba').value.trim();
+        const { error: napaka } = await sb.from('reports').insert({
+          listing_id: oglas.id,
+          razlog: ($('prijava-razlog').value + (opomba ? ': ' + opomba : '')).slice(0, 500),
+        });
+        gumb.disabled = false;
+        const izid = $('prijava-izid');
+        izid.hidden = false;
+        izid.classList.toggle('napaka', Boolean(napaka && napaka.code !== '23505'));
+        if (!napaka || napaka.code === '23505') {
+          e.target.hidden = true;
+          izid.textContent = napaka
+            ? 'Tvoja prijava tega oglasa je že zabeležena. Skrbnik ga bo pregledal.'
+            : 'Hvala! Skrbnik bo oglas pregledal.';
+        } else {
+          izid.textContent = 'Prijave ni bilo mogoče poslati. Poskusi znova.';
+        }
+      });
+    }
+  }
+
+  if (lastnik) {
+    $('lastnik-uredi').href = 'nov-oglas.html?id=' + encodeURIComponent(oglas.id);
+    $('lastnik').hidden = false;
+  }
+
   if (!seja) {
-    $('kontakt-prijava').href = 'prijava.html?naprej=' + encodeURIComponent('oglas.html?id=' + oglas.id);
+    $('kontakt-prijava').href = naPrijavo;
     $('kontakt-prijava').hidden = false;
     return;
   }

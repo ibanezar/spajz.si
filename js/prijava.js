@@ -62,6 +62,7 @@
     $('privolitev').required = nov;
     $('gumb-shrani').textContent = nov ? 'Shrani in nadaljuj' : 'Shrani';
     $('prijavljen-kot').textContent = seja.user.email || '';
+    $('povezava-skrbnik').hidden = !(p && p.je_skrbnik);
     pokazi('korak-profil');
   }
 

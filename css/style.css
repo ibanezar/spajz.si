@@ -612,3 +612,128 @@ fieldset.polje legend,
     grid-template-columns: minmax(0, 40rem);
   }
 }
+
+/* Moji oglasi in skrbništvo */
+
+.seznam-mojih {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.moj-oglas,
+.skrbnik-postavka {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--rob);
+  border-radius: var(--radij);
+  background: var(--povrsina);
+}
+
+.moj-oglas {
+  grid-template-columns: 88px minmax(0, 1fr);
+}
+
+.moj-oglas-slika {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--rob);
+}
+
+.moj-oglas-besedilo h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.moj-oglas-besedilo p,
+.skrbnik-postavka p {
+  margin: 0 0 0.25rem;
+}
+
+.moj-oglas-dejanja {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.moj-oglas-dejanja .gumb {
+  min-height: 44px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.gumb-nevarno {
+  border-color: var(--napaka);
+  color: var(--napaka);
+}
+
+.gumb-nevarno:hover {
+  background: #fbeceb;
+  color: var(--napaka);
+  border-color: var(--napaka);
+}
+
+.znacka {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--rob);
+}
+
+.znacka-active {
+  background: #dcebdc;
+  color: var(--poudarek-temen);
+}
+
+.znacka-pending {
+  background: #fdf0c8;
+  color: #6b4e00;
+}
+
+.znacka-hidden {
+  background: #fbeceb;
+  color: var(--napaka);
+}
+
+.skrbnik-postavka a {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Prijava oglasa */
+
+.prijava-oglasa {
+  margin: 1.5rem 0;
+}
+
+.prijava-oglasa summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--besedilo-tiho);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.prijava-oglasa .obrazec {
+  margin-top: 0.5rem;
+}
+
+a.gumb {
+  text-decoration: none;
+}
+
+a.gumb:not(.gumb-drugotni),
+a.gumb:not(.gumb-drugotni):hover {
+  color: #fff;
+}

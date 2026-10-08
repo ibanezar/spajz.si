@@ -60,6 +60,34 @@
           <p class="pomoc">Dogovor o prevzemu in plačilu poteka neposredno s prodajalcem.</p>
         </section>
 
+        <p id="lastnik" class="sporocilo" hidden>To je tvoj oglas.
+          <a id="lastnik-uredi" href="nov-oglas.html">Uredi oglas</a> ·
+          <a href="moji-oglasi.html">Moji oglasi</a></p>
+
+        <details id="prijava-oglasa" class="prijava-oglasa" hidden>
+          <summary>Prijavi neprimeren oglas</summary>
+          <p id="prijava-neprijavljen" hidden><a href="prijava.html">Prijavi se</a>, da lahko oglas prijaviš.</p>
+          <form id="obrazec-prijava" class="obrazec" hidden>
+            <div class="polje">
+              <label for="prijava-razlog">Razlog</label>
+              <select id="prijava-razlog" required>
+                <option value="">Izberi</option>
+                <option>Prepovedan izdelek (alkohol, žive živali, gobe ali zelišča brez dokazil)</option>
+                <option>Zavajajoč ali lažen oglas</option>
+                <option>Goljufija ali neželena pošta</option>
+                <option>Neprimerna vsebina ali slike</option>
+                <option>Drugo</option>
+              </select>
+            </div>
+            <div class="polje">
+              <label for="prijava-opomba">Opomba <span class="neobvezno">(neobvezno)</span></label>
+              <textarea id="prijava-opomba" rows="3" maxlength="300"></textarea>
+            </div>
+            <button type="submit" class="gumb gumb-drugotni">Pošlji prijavo</button>
+          </form>
+          <p id="prijava-izid" class="sporocilo" role="status" hidden></p>
+        </details>
+
         <p><a href="index.html">Nazaj na vse oglase</a></p>
       </div>
     </article>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moji oglasi | Špajz</title>
-  <meta name="description" content="Uredi, podaljšaj ali odstrani svoje oglase.">
+  <title>Skrbništvo | Špajz</title>
+  <meta name="robots" content="noindex">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-zahteva-prijavo>
@@ -19,12 +19,29 @@
   </header>
 
   <main id="vsebina">
-    <h1>Moji oglasi</h1>
+    <h1>Skrbništvo</h1>
     <p id="sporocilo" class="sporocilo" role="status" aria-live="polite" hidden></p>
-    <div id="vsebina-mojih" hidden>
-      <p><a class="gumb" href="nov-oglas.html">Objavi nov oglas</a></p>
-      <p id="stanje" class="stanje"></p>
-      <ul id="seznam-mojih" class="seznam-mojih"></ul>
+    <p id="ni-skrbnik" hidden>Ta stran je namenjena samo skrbnikom.</p>
+
+    <div id="skrbnik" hidden>
+      <section aria-labelledby="h-cakajoci">
+        <h2 id="h-cakajoci">Prvi oglasi novih uporabnikov</h2>
+        <p class="pomoc">Ko potrdiš uporabnika, so objavljeni vsi njegovi čakajoči oglasi, novi pa odslej takoj.</p>
+        <ul id="seznam-cakajoci" class="seznam-mojih"></ul>
+        <p id="prazno-cakajoci" class="stanje">Ni oglasov, ki bi čakali na potrditev.</p>
+      </section>
+
+      <section aria-labelledby="h-prijave">
+        <h2 id="h-prijave">Prijave oglasov</h2>
+        <ul id="seznam-prijave" class="seznam-mojih"></ul>
+        <p id="prazno-prijave" class="stanje">Ni odprtih prijav.</p>
+      </section>
+
+      <section aria-labelledby="h-skriti">
+        <h2 id="h-skriti">Skriti oglasi</h2>
+        <ul id="seznam-skriti" class="seznam-mojih"></ul>
+        <p id="prazno-skriti" class="stanje">Ni skritih oglasov.</p>
+      </section>
     </div>
   </main>
 
@@ -41,6 +58,6 @@
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/podatki.js"></script>
-  <script src="js/moji-oglasi.js"></script>
+  <script src="js/skrbnik.js"></script>
 </body>
 </html>
