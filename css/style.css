@@ -1,0 +1,117 @@
+/* Špajz: osnovni slogi. Mobilni pogled je prvi. */
+
+:root {
+  --ozadje: #fbf8f2;
+  --povrsina: #ffffff;
+  --besedilo: #2b2620;
+  --besedilo-tiho: #5f574c;
+  --poudarek: #2f6b3a;
+  --poudarek-temen: #24542d;
+  --rob: #e3dccf;
+  --napaka: #a3261b;
+  --radij: 10px;
+  --pisava: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--pisava);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--besedilo);
+  background: var(--ozadje);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--poudarek);
+}
+
+a:hover {
+  color: var(--poudarek-temen);
+}
+
+:focus-visible {
+  outline: 3px solid var(--poudarek);
+  outline-offset: 2px;
+}
+
+.preskoci {
+  position: absolute;
+  left: -9999px;
+}
+
+.preskoci:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--povrsina);
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.glava,
+.noga,
+main {
+  padding: 0 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.glava {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--besedilo);
+}
+
+.glava nav,
+.noga nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.glava nav a {
+  padding: 0.5rem 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+main {
+  min-height: 60vh;
+  padding-bottom: 2rem;
+}
+
+.noga {
+  border-top: 1px solid var(--rob);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  color: var(--besedilo-tiho);
+  font-size: 0.9rem;
+}
