@@ -115,3 +115,146 @@ main {
   color: var(--besedilo-tiho);
   font-size: 0.9rem;
 }
+
+/* Gumbi */
+
+.gumb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.6rem 1.25rem;
+  border: 2px solid var(--poudarek);
+  border-radius: var(--radij);
+  background: var(--poudarek);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gumb:hover {
+  background: var(--poudarek-temen);
+  border-color: var(--poudarek-temen);
+}
+
+.gumb:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.gumb-drugotni {
+  background: var(--povrsina);
+  color: var(--poudarek);
+}
+
+.gumb-drugotni:hover {
+  background: var(--ozadje);
+  color: var(--poudarek-temen);
+}
+
+.gumb-povezava {
+  padding: 0.5rem 0;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--poudarek);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Obrazci */
+
+.obrazec {
+  display: grid;
+  gap: 1rem;
+  max-width: 28rem;
+}
+
+.polje {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.polje label {
+  font-weight: 600;
+}
+
+.polje input,
+.polje select,
+.polje textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #8a8174;
+  border-radius: var(--radij);
+  background: var(--povrsina);
+  color: var(--besedilo);
+  font: inherit;
+  font-size: 1rem; /* 16 px prepreči povečavo na iPhonu */
+}
+
+.polje-potrditev {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.6rem;
+}
+
+.polje-potrditev input {
+  width: 1.4rem;
+  height: 1.4rem;
+  min-height: 0;
+  margin: 0.15rem 0 0;
+}
+
+.polje-potrditev label {
+  font-weight: 400;
+}
+
+.neobvezno,
+.pomoc {
+  font-weight: 400;
+  color: var(--besedilo-tiho);
+}
+
+.pomoc {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.ali {
+  max-width: 28rem;
+  text-align: center;
+  color: var(--besedilo-tiho);
+}
+
+#google .gumb {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.prijavljen {
+  margin-top: 2rem;
+  color: var(--besedilo-tiho);
+}
+
+/* Sporočila */
+
+.sporocilo {
+  max-width: 28rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--poudarek);
+  border-radius: 4px;
+  background: #eaf3ea;
+}
+
+.sporocilo.napaka {
+  border-left-color: var(--napaka);
+  background: #fbeceb;
+  color: var(--napaka);
+}
+
+[hidden] {
+  display: none !important;
+}
