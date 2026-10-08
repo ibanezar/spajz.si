@@ -19,8 +19,50 @@
   </header>
 
   <main id="vsebina">
-    <h1>Oglas</h1>
-    <p>Stran je v pripravi.</p>
+    <p id="nalaganje" class="stanje" role="status">Nalagam oglas …</p>
+
+    <section id="ni-oglasa" hidden>
+      <h1>Oglas ni na voljo</h1>
+      <p>Oglas ne obstaja, je potekel ali pa ga je prodajalec umaknil.</p>
+      <p><a href="index.html">Nazaj na vse oglase</a></p>
+    </section>
+
+    <article id="oglas" class="oglas" hidden>
+      <p id="opomba" class="sporocilo napaka" hidden></p>
+
+      <div id="galerija" class="galerija" hidden>
+        <img id="glavna-slika" class="glavna-slika" src="" alt="">
+        <ul id="slicice" class="slicice"></ul>
+      </div>
+
+      <div class="oglas-podrobnosti">
+        <p id="kategorija" class="oglas-kategorija"></p>
+        <h1 id="naslov"></h1>
+        <p id="cena" class="oglas-cena"></p>
+
+        <dl class="oglas-podatki">
+          <dt>Kraj</dt>
+          <dd id="kraj"></dd>
+          <dt>Prodajalec</dt>
+          <dd id="prodajalec"></dd>
+          <dt>Objavljeno</dt>
+          <dd id="objavljeno"></dd>
+        </dl>
+
+        <p id="opis" class="oglas-opis"></p>
+
+        <section class="kontakt" aria-labelledby="kontakt-naslov">
+          <h2 id="kontakt-naslov">Kontakt</h2>
+          <button type="button" id="gumb-kontakt" class="gumb" hidden>Pokaži kontakt</button>
+          <a id="kontakt-prijava" class="gumb" href="prijava.html" hidden>Prijavi se za ogled kontakta</a>
+          <p id="kontakt-napaka" class="sporocilo napaka" hidden>Kontakta ni bilo mogoče naložiti. Poskusi znova.</p>
+          <dl id="kontakt-podatki" class="oglas-podatki" hidden></dl>
+          <p class="pomoc">Dogovor o prevzemu in plačilu poteka neposredno s prodajalcem.</p>
+        </section>
+
+        <p><a href="index.html">Nazaj na vse oglase</a></p>
+      </div>
+    </article>
   </main>
 
   <footer class="noga">
@@ -35,5 +77,7 @@
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
+  <script src="js/oglas.js"></script>
 </body>
 </html>

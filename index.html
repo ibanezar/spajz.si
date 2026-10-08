@@ -19,8 +19,33 @@
   </header>
 
   <main id="vsebina">
-    <h1>Špajz</h1>
-    <p>Stran je v pripravi.</p>
+    <h1 class="vizualno-skrito">Špajz, lokalna tržnica</h1>
+    <p class="uvod">Domača zelenjava, sadje, med, jajca in dobrote iz Zgornje Savinjske in Šaleške doline.
+      Neposredno od ljudi, ki jih pridelajo.</p>
+
+    <form id="filtri" class="filtri" role="search">
+      <div class="polje polje-iskanje">
+        <label for="iskanje" class="vizualno-skrito">Išči po oglasih</label>
+        <input id="iskanje" name="q" type="search" placeholder="Išči, npr. med, jajca, krompir" autocomplete="off">
+      </div>
+      <div class="polje">
+        <label for="filter-kategorija">Kategorija</label>
+        <select id="filter-kategorija" name="kategorija">
+          <option value="">Vse kategorije</option>
+        </select>
+      </div>
+      <div class="polje">
+        <label for="filter-dolina">Dolina</label>
+        <select id="filter-dolina" name="dolina">
+          <option value="">Vse doline</option>
+        </select>
+      </div>
+      <button type="submit" class="vizualno-skrito">Išči</button>
+    </form>
+
+    <p id="stanje" class="stanje" role="status" aria-live="polite"></p>
+    <ul id="seznam-oglasov" class="seznam-oglasov"></ul>
+    <button type="button" id="gumb-vec" class="gumb gumb-drugotni gumb-vec" hidden>Pokaži več oglasov</button>
   </main>
 
   <footer class="noga">
@@ -35,5 +60,7 @@
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
+  <script src="js/naslovnica.js"></script>
 </body>
 </html>

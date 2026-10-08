@@ -36,6 +36,17 @@ window.spajzPodatki = (function () {
     return `${oblikaCene.format(oglas.cena)} € / ${enote[oglas.enota] || oglas.enota}`;
   }
 
+  // "8. 10. 2026" (brskalniki imena mesecev ne sklanjajo vedno pravilno)
+  function datum(niz) {
+    const d = new Date(niz);
+    return `${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()}`;
+  }
+
+  // Javni URL slike v vedru "oglasi"
+  function slikaUrl(pot) {
+    return window.sb.storage.from('oglasi').getPublicUrl(pot).data.publicUrl;
+  }
+
   // Napolni <select> z možnostmi iz seznama.
   function napolniIzbiro(select, seznam) {
     for (const [vrednost, besedilo] of Object.entries(seznam)) {
@@ -43,5 +54,5 @@ window.spajzPodatki = (function () {
     }
   }
 
-  return { kategorije, enote, doline, cena, napolniIzbiro };
+  return { kategorije, enote, doline, cena, datum, slikaUrl, napolniIzbiro };
 })();

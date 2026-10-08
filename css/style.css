@@ -362,3 +362,253 @@ fieldset.polje legend,
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
 }
+
+/* Naslovnica */
+
+.uvod {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.05rem;
+}
+
+.filtri {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filtri .polje-iskanje {
+  grid-column: 1 / -1;
+}
+
+.filtri label {
+  font-size: 0.9rem;
+}
+
+.stanje {
+  color: var(--besedilo-tiho);
+  min-height: 1.5em;
+}
+
+.seznam-oglasov {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kartica {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--rob);
+  border-radius: var(--radij);
+  background: var(--povrsina);
+  color: var(--besedilo);
+  text-decoration: none;
+}
+
+.kartica:hover h2 {
+  text-decoration: underline;
+}
+
+.kartica img,
+.kartica-brez-slike {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--rob);
+}
+
+.kartica-brez-slike {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: var(--besedilo-tiho);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.kartica-besedilo {
+  padding: 0.5rem 0.65rem 0.65rem;
+}
+
+.kartica h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.kartica p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.kartica-cena {
+  font-weight: 700;
+  color: var(--poudarek);
+}
+
+.kartica-kraj {
+  color: var(--besedilo-tiho);
+}
+
+.gumb-vec {
+  display: flex;
+  width: 100%;
+  max-width: 28rem;
+  margin: 1.25rem auto 0;
+}
+
+@media (min-width: 640px) {
+  .filtri {
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: end;
+  }
+
+  .filtri .polje-iskanje {
+    grid-column: auto;
+  }
+
+  .seznam-oglasov {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .seznam-oglasov {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Stran oglasa */
+
+.oglas {
+  display: grid;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.galerija {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.glavna-slika {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: var(--radij);
+  background: var(--rob);
+}
+
+.slicice {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slicice button {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+
+.slicice button[aria-current='true'] {
+  border-color: var(--poudarek);
+}
+
+.slicice img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.oglas h1 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.oglas-kategorija {
+  margin: 0;
+  color: var(--besedilo-tiho);
+  font-size: 0.9rem;
+}
+
+.oglas-cena {
+  margin: 0.25rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--poudarek);
+}
+
+.oglas-podatki {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 1rem 0;
+}
+
+.oglas-podatki dt {
+  color: var(--besedilo-tiho);
+}
+
+.oglas-podatki dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.oglas-opis {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.kontakt {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--rob);
+  border-radius: var(--radij);
+  background: var(--povrsina);
+}
+
+.kontakt h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+.kontakt .gumb {
+  width: 100%;
+  text-decoration: none;
+}
+
+.kontakt .pomoc {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 800px) {
+  .oglas {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+    gap: 2rem;
+  }
+
+  .oglas > .sporocilo {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 800px) {
+  .oglas:has(> .galerija[hidden]) {
+    grid-template-columns: minmax(0, 40rem);
+  }
+}
