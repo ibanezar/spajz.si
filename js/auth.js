@@ -57,17 +57,11 @@
     location.href = 'index.html';
   }
 
+  // Odjava je na strani Moj profil, da glava na telefonu ostane v eni vrstici.
   async function posodobiGlavo() {
     const povezava = document.querySelector('.glava a[href="prijava.html"]');
     if (!povezava || !(await seja())) return;
-
     povezava.textContent = 'Moj profil';
-    const gumb = document.createElement('button');
-    gumb.type = 'button';
-    gumb.className = 'gumb-povezava';
-    gumb.textContent = 'Odjava';
-    gumb.addEventListener('click', odjava);
-    povezava.after(gumb);
   }
 
   window.spajzAuth = { seja, profil, jePopoln, varnaPot, zahtevajPrijavo, odjava };

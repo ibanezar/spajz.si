@@ -19,8 +19,86 @@
   </header>
 
   <main id="vsebina">
-    <h1>Nov oglas</h1>
-    <p>Stran je v pripravi.</p>
+    <h1 id="naslov-strani" tabindex="-1">Nov oglas</h1>
+    <p id="sporocilo" class="sporocilo" role="status" aria-live="polite" hidden></p>
+
+    <form id="obrazec-oglas" class="obrazec" hidden>
+      <div class="polje">
+        <label for="naslov">Naslov</label>
+        <input id="naslov" name="naslov" type="text" minlength="3" maxlength="100" required
+          placeholder="npr. Domač cvetlični med" aria-describedby="naslov-pomoc">
+        <p id="naslov-pomoc" class="pomoc">Kratko in jasno: kaj prodajaš.</p>
+      </div>
+
+      <div class="polje">
+        <label for="opis">Opis <span class="neobvezno">(neobvezno)</span></label>
+        <textarea id="opis" name="opis" rows="5" maxlength="2000"
+          placeholder="Kako je pridelano, koliko imaš, kdaj in kje se lahko prevzame …"></textarea>
+      </div>
+
+      <div class="polje">
+        <label for="kategorija">Kategorija</label>
+        <select id="kategorija" name="kategorija" required>
+          <option value="">Izberi</option>
+        </select>
+      </div>
+
+      <fieldset class="polje" id="polje-cena">
+        <legend>Cena</legend>
+        <div class="cena-vrstica">
+          <div class="polje">
+            <label for="cena">Znesek v €</label>
+            <input id="cena" name="cena" type="text" inputmode="decimal" autocomplete="off"
+              pattern="\s*\d{1,5}([,.]\d{1,2})?\s*" placeholder="3,50">
+          </div>
+          <div class="polje">
+            <label for="enota">na</label>
+            <select id="enota" name="enota">
+              <option value="">Izberi</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <div class="polje polje-potrditev">
+        <input id="po-dogovoru" name="po-dogovoru" type="checkbox">
+        <label for="po-dogovoru">Cena po dogovoru</label>
+      </div>
+
+      <div class="polje">
+        <label for="dolina">Dolina</label>
+        <select id="dolina" name="dolina" required>
+          <option value="">Izberi</option>
+        </select>
+      </div>
+
+      <div class="polje">
+        <label for="kraj">Kraj prevzema</label>
+        <input id="kraj" name="kraj" type="text" minlength="2" maxlength="80" required
+          autocomplete="address-level2">
+      </div>
+
+      <div class="polje">
+        <span class="oznaka">Slike <span class="neobvezno">(do 4, prva je naslovna)</span></span>
+        <ul id="seznam-slik" class="seznam-slik"></ul>
+        <label for="slike" id="oznaka-slike" class="gumb gumb-drugotni dodaj-slike">Dodaj slike</label>
+        <input id="slike" class="vizualno-skrito" type="file" accept="image/*" multiple>
+        <p id="stevec-slik" class="pomoc" aria-live="polite"></p>
+      </div>
+
+      <p class="pomoc">Na Špajzu ne objavljamo alkohola, živih živali ter gob in zelišč za uživanje brez dokazil.
+        Več v <a href="pravila.html">pravilih oglaševanja</a>.</p>
+
+      <button type="submit" id="gumb-objavi" class="gumb">Objavi oglas</button>
+    </form>
+
+    <section id="uspeh" hidden>
+      <p id="uspeh-besedilo"></p>
+      <p class="povezave-uspeh">
+        <a id="povezava-oglas" href="oglas.html">Poglej oglas</a>
+        <a href="nov-oglas.html">Objavi še en oglas</a>
+        <a href="moji-oglasi.html">Moji oglasi</a>
+      </p>
+    </section>
   </main>
 
   <footer class="noga">
@@ -35,5 +113,8 @@
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
+  <script src="js/slike.js"></script>
+  <script src="js/nov-oglas.js"></script>
 </body>
 </html>

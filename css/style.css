@@ -258,3 +258,107 @@ main {
 [hidden] {
   display: none !important;
 }
+
+/* Nov oglas */
+
+fieldset.polje {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+fieldset.polje legend,
+.oznaka {
+  padding: 0;
+  font-weight: 600;
+}
+
+.cena-vrstica {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.cena-vrstica label {
+  font-weight: 400;
+  color: var(--besedilo-tiho);
+}
+
+.onemogoceno {
+  opacity: 0.5;
+}
+
+.polje textarea {
+  resize: vertical;
+}
+
+.vizualno-skrito,
+.polje input.vizualno-skrito {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.dodaj-slike {
+  font-weight: 600 !important;
+  color: var(--poudarek);
+}
+
+.polje:has(#slike:focus-visible) .dodaj-slike {
+  outline: 3px solid var(--poudarek);
+  outline-offset: 2px;
+}
+
+.seznam-slik {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seznam-slik:empty {
+  display: none;
+}
+
+.seznam-slik li {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.seznam-slik img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radij);
+  background: var(--rob);
+}
+
+.seznam-slik li:first-child img {
+  outline: 3px solid var(--poudarek);
+  outline-offset: -3px;
+}
+
+.odstrani-sliko {
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--napaka);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.povezave-uspeh {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
