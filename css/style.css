@@ -737,3 +737,49 @@ a.gumb:not(.gumb-drugotni),
 a.gumb:not(.gumb-drugotni):hover {
   color: #fff;
 }
+
+.izbris-racuna {
+  margin-top: 2.5rem;
+  max-width: 28rem;
+}
+
+.izbris-racuna summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--besedilo-tiho);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Daljša besedila (pravila, zasebnost) */
+
+.besedilo {
+  max-width: 42rem;
+}
+
+.besedilo h2 {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.besedilo li {
+  margin-bottom: 0.35rem;
+}
+
+.dopolni {
+  background: #fdf0c8;
+  padding: 0 0.25rem;
+}
+
+/* Dovolj veliki cilji za dotik */
+.noga nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.polje-potrditev input {
+  width: 1.5rem;
+  height: 1.5rem;
+}

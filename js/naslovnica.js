@@ -46,7 +46,7 @@
     const slika = (oglas.listing_images || []).sort((x, y) => x.vrstni_red - y.vrstni_red)[0];
     if (slika) {
       const img = document.createElement('img');
-      img.src = spajzPodatki.slikaUrl(slika.pot);
+      spajzPodatki.mala(img, slika.pot);
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';

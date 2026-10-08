@@ -19,6 +19,8 @@
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -32,9 +34,58 @@
     </nav>
   </header>
 
-  <main id="vsebina">
-    <h1>Zasebnost</h1>
-    <p>Stran je v pripravi.</p>
+  <main id="vsebina" class="besedilo">
+    <h1>Obvestilo o zasebnosti</h1>
+    <p>Na Špajzu zbiramo samo podatke, ki jih potrebujemo, da tržnica deluje. Ne uporabljamo
+      oglaševalskih ali analitičnih sledilnikov in podatkov ne prodajamo.</p>
+
+    <h2>Kdo je upravljavec</h2>
+    <p><span class="dopolni">[Ime in priimek ali naziv, naslov]</span>, e-pošta:
+      <span class="dopolni">[kontaktni e-naslov]</span>.</p>
+
+    <h2>Katere podatke zbiramo</h2>
+    <ul>
+      <li><strong>Ob prijavi:</strong> e-naslov (in ime, če se prijaviš z Googlom).</li>
+      <li><strong>V profilu:</strong> ime, kraj, dolina in telefon (neobvezno).</li>
+      <li><strong>V oglasih:</strong> besedilo, cena, kraj in fotografije. Iz fotografij že na tvoji
+        napravi odstranimo skrite podatke, tudi lokacijo GPS.</li>
+      <li><strong>Prijave oglasov:</strong> kdo je prijavil oglas in razlog.</li>
+    </ul>
+
+    <h2>Za kaj jih uporabljamo in kdo jih vidi</h2>
+    <ul>
+      <li>Ime, kraj in oglasi s fotografijami so javni, da jih kupci najdejo.</li>
+      <li>Telefon in e-naslov vidijo samo prijavljeni uporabniki, ko pri oglasu kliknejo »Pokaži kontakt«.</li>
+      <li>E-naslov uporabljamo za prijavo (pošljemo ti povezavo) in za nujna obvestila o tvojem računu.</li>
+      <li>Prijave oglasov vidi samo skrbnik.</li>
+    </ul>
+    <p>Pravna podlaga je izvajanje storitve, ki jo uporabljaš (6. člen, 1. odstavek, točka b Splošne
+      uredbe o varstvu podatkov), za objavo telefona pa tvoja privolitev, ki jo prekličeš tako,
+      da telefon izbrišeš iz profila.</p>
+
+    <h2>Obdelovalci</h2>
+    <ul>
+      <li><strong>Supabase</strong> (baza, prijava in shramba slik), strežniki v EU (Frankfurt).</li>
+      <li><strong>Cloudflare</strong> (gostovanje spletne strani).</li>
+    </ul>
+
+    <h2>Piškotki in shranjevanje v brskalniku</h2>
+    <p>Ne uporabljamo piškotkov za sledenje. Ko se prijaviš, brskalnik shrani podatek o prijavi
+      (v lokalni shrambi), da se ti ni treba prijavljati vsakič znova. To je nujno za delovanje in se izbriše ob odjavi.</p>
+
+    <h2>Koliko časa hranimo podatke</h2>
+    <p>Podatke hranimo, dokler imaš račun. Oglase lahko kadarkoli izbrišeš sam. Ko izbrišeš račun,
+      izbrišemo profil, vse oglase s fotografijami in tvoje prijave.</p>
+
+    <h2>Tvoje pravice</h2>
+    <ul>
+      <li>Podatke v profilu in oglasih lahko kadarkoli popraviš.</li>
+      <li>Račun z vsemi podatki izbrišeš sam na strani Moj profil, razdelek »Izbris računa«.</li>
+      <li>Za dostop do podatkov, omejitev obdelave ali ugovor nam piši na zgornji e-naslov.</li>
+      <li>Pritožbo lahko vložiš pri Informacijskem pooblaščencu (<a href="https://www.ip-rs.si">www.ip-rs.si</a>).</li>
+    </ul>
+
+    <p class="pomoc">Zadnja sprememba: oktober 2026.</p>
   </main>
 
   <footer class="noga">
@@ -45,7 +96,7 @@
     <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>

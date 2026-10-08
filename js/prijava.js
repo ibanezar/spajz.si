@@ -142,6 +142,31 @@
 
   $('gumb-odjava').addEventListener('click', spajzAuth.odjava);
 
+  // Izbris računa (GDPR): najprej datoteke v shrambi, nato račun z vsemi podatki v bazi.
+  $('gumb-izbris').addEventListener('click', async () => {
+    if (!confirm('Res želiš trajno izbrisati račun in vse svoje oglase? Tega ni mogoče razveljaviti.')) return;
+    const gumb = $('gumb-izbris');
+    gumb.disabled = true;
+
+    const { data: oglasi } = await sb
+      .from('listings')
+      .select('listing_images(pot)')
+      .eq('user_id', trenutnaSeja.user.id);
+    const poti = (oglasi || []).flatMap((o) => (o.listing_images || []).map((s) => s.pot));
+    if (poti.length) await sb.storage.from('oglasi').remove(window.spajzPodatki.vseDatoteke(poti));
+
+    const { error } = await sb.rpc('izbrisi_racun');
+    if (error) {
+      gumb.disabled = false;
+      sporocilo('Računa ni bilo mogoče izbrisati. Poskusi znova ali piši skrbniku.', true);
+      return;
+    }
+    await sb.auth.signOut({ scope: 'local' });
+    pokazi('');
+    $('naslov-strani').textContent = 'Račun je izbrisan';
+    sporocilo('Tvoj račun in vsi tvoji oglasi so izbrisani. Hvala za zaupanje.');
+  });
+
   // Napaka v povratni povezavi (npr. potekla ali že uporabljena povezava)
   const hash = new URLSearchParams(location.hash.slice(1));
   if (hash.get('error') || hash.get('error_code')) {

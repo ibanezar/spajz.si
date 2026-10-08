@@ -47,6 +47,23 @@ window.spajzPodatki = (function () {
     return window.sb.storage.from('oglasi').getPublicUrl(pot).data.publicUrl;
   }
 
+  // Majhna različica slike (400 px) je shranjena ob veliki: "0-ab12.webp" -> "0-ab12-mala.webp".
+  function malaPot(pot) {
+    return pot.replace(/(\.\w+)$/, '-mala$1');
+  }
+
+  // Vse datoteke v shrambi, ki pripadajo slikam (velike in male), npr. za brisanje.
+  function vseDatoteke(poti) {
+    return poti.flatMap((p) => [p, malaPot(p)]);
+  }
+
+  // <img> z majhno sliko; če je ni (slike, naložene pred uvedbo malih), uporabi veliko.
+  function mala(img, pot) {
+    img.src = slikaUrl(malaPot(pot));
+    img.addEventListener('error', () => { img.src = slikaUrl(pot); }, { once: true });
+    return img;
+  }
+
   // Napolni <select> z možnostmi iz seznama.
   function napolniIzbiro(select, seznam) {
     for (const [vrednost, besedilo] of Object.entries(seznam)) {
@@ -54,5 +71,5 @@ window.spajzPodatki = (function () {
     }
   }
 
-  return { kategorije, enote, doline, cena, datum, slikaUrl, napolniIzbiro };
+  return { kategorije, enote, doline, cena, datum, slikaUrl, malaPot, vseDatoteke, mala, napolniIzbiro };
 })();

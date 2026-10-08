@@ -72,7 +72,7 @@
         gumb.type = 'button';
         gumb.setAttribute('aria-label', `Pokaži sliko ${i + 1}`);
         const img = document.createElement('img');
-        img.src = spajzPodatki.slikaUrl(s.pot);
+        spajzPodatki.mala(img, s.pot);
         img.alt = '';
         img.loading = 'lazy';
         gumb.append(img);

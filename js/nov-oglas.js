@@ -146,10 +146,11 @@
   async function naloziNove(listingId, gumb) {
     const poti = [];
     const novi = slike.filter((s) => !s.obstojeca);
+    let stevec = 0;
     try {
       for (const [i, s] of slike.entries()) {
         if (s.obstojeca) continue;
-        gumb.textContent = `Nalagam sliko ${poti.length + 1} od ${novi.length} …`;
+        gumb.textContent = `Nalagam sliko ${++stevec} od ${novi.length} …`;
         // <user_id>/<listing_id>/<zaporedje>-<naključno>.<končnica>
         const pot = `${uid}/${listingId}/${i}-${crypto.randomUUID().slice(0, 8)}.${s.koncnica}`;
         const nalozi = await sb.storage.from('oglasi').upload(pot, s.blob, {
@@ -158,6 +159,15 @@
         });
         if (nalozi.error) throw nalozi.error;
         poti.push(pot);
+        if (s.mala) {
+          const mala = spajzPodatki.malaPot(pot);
+          const naloziMalo = await sb.storage.from('oglasi').upload(mala, s.mala, {
+            contentType: s.mala.type,
+            cacheControl: '31536000',
+          });
+          if (naloziMalo.error) throw naloziMalo.error;
+          poti.push(mala);
+        }
         const vnos = await sb.from('listing_images').insert({ listing_id: listingId, pot, vrstni_red: i });
         if (vnos.error) throw vnos.error;
       }
@@ -269,7 +279,7 @@
     // 1. odstranjene slike: najprej vrstice, nato datoteke
     if (odstranjene.length) {
       await sb.from('listing_images').delete().in('id', odstranjene.map((s) => s.id));
-      await sb.storage.from('oglasi').remove(odstranjene.map((s) => s.pot));
+      await sb.storage.from('oglasi').remove(spajzPodatki.vseDatoteke(odstranjene.map((s) => s.pot)));
       odstranjene.length = 0;
     }
 
@@ -286,7 +296,7 @@
       if (napaka.poti.length) {
         // naložene, a nezapisane datoteke pobrišemo; zapisane ostanejo
         const { data: zapisane } = await sb.from('listing_images').select('pot').eq('listing_id', urejanjeId);
-        const ostanejo = new Set((zapisane || []).map((z) => z.pot));
+        const ostanejo = new Set(spajzPodatki.vseDatoteke((zapisane || []).map((z) => z.pot)));
         const odvecne = napaka.poti.filter((p) => !ostanejo.has(p));
         if (odvecne.length) await sb.storage.from('oglasi').remove(odvecne);
       }

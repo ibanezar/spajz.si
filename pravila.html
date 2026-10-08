@@ -19,6 +19,8 @@
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -32,9 +34,53 @@
     </nav>
   </header>
 
-  <main id="vsebina">
+  <main id="vsebina" class="besedilo">
     <h1>Pravila oglaševanja</h1>
-    <p>Stran je v pripravi.</p>
+    <p>Špajz je lokalna tržnica, kjer sosedje ponudijo, kar so pridelali ali naredili doma.
+      Da ostane prijazna in zanesljiva za vse, veljajo preprosta pravila.</p>
+
+    <h2>Kaj lahko ponudiš</h2>
+    <ul>
+      <li>Zelenjavo, sadje, med, jajca, mleko in mlečne izdelke, meso in mesne izdelke, kruh in peko,
+        vloženo zelenjavo, sokove, marmelade in podobne domače dobrote.</li>
+      <li>Drugo, kar sodi na lokalno tržnico: sadike, semena, domače izdelke.</li>
+    </ul>
+
+    <h2>Česa ni dovoljeno objaviti</h2>
+    <ul>
+      <li>Alkoholnih pijač.</li>
+      <li>Živih živali.</li>
+      <li>Gob in zelišč za uživanje brez ustreznega dokazila o poznavanju in neoporečnosti.</li>
+      <li>Zdravil, prehranskih dopolnil z zdravilnimi trditvami, tobaka in drugih izdelkov, katerih prodaja je omejena.</li>
+      <li>Izdelkov, ki niso tvoji ali jih nimaš pravice prodajati.</li>
+      <li>Zavajajočih opisov, tujih fotografij in oglasov, ki niso namenjeni prodaji.</li>
+    </ul>
+
+    <h2>Odgovornost prodajalca</h2>
+    <p>Špajz samo poveže prodajalca in kupca. Pri prodaji ne sodeluje, ne prevzema plačil in ne dostavlja.
+      Za izdelke, njihovo zakonitost, označevanje, sledljivost in higieno je odgovoren prodajalec.</p>
+    <p>Prodaja hrane ima svoja pravila (npr. registracija kmetije z dopolnilno dejavnostjo ali
+      registracija nosilca živilske dejavnosti). Če ne veš, kaj velja zate, se pozanimaj pri
+      kmetijski svetovalni službi ali pri Upravi za varno hrano, veterinarstvo in varstvo rastlin.</p>
+
+    <h2>Kako deluje objava</h2>
+    <ul>
+      <li>Prvi oglas novega uporabnika pred objavo pregleda skrbnik. Nadaljnji oglasi so objavljeni takoj.</li>
+      <li>Oglas velja 30 dni. Nato se samodejno skrije, v razdelku Moji oglasi pa ga z enim klikom podaljšaš.</li>
+      <li>Ko izdelek prodaš, oglas označi kot prodan ali ga izbriši.</li>
+      <li>Kontakt prodajalca vidijo samo prijavljeni uporabniki.</li>
+    </ul>
+
+    <h2>Prijava neprimernega oglasa</h2>
+    <p>Če opaziš oglas, ki krši pravila, na strani oglasa klikni »Prijavi neprimeren oglas«.
+      Skrbnik bo prijavo pregledal in oglas po potrebi skril. Uporabnikom, ki pravila kršijo večkrat,
+      lahko račun izbrišemo.</p>
+
+    <h2>Kupcem</h2>
+    <p>Dogovor o ceni, prevzemu in plačilu poteka neposredno s prodajalcem. Pred plačilom se prepričaj
+      o izdelku in ne nakazuj denarja vnaprej neznanim osebam.</p>
+
+    <p class="pomoc">Zadnja sprememba: oktober 2026.</p>
   </main>
 
   <footer class="noga">
@@ -45,7 +91,7 @@
     <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>

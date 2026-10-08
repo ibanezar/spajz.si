@@ -41,7 +41,7 @@
 
   async function izbrisi(oglas) {
     if (!confirm(`Res želiš izbrisati oglas »${oglas.naslov}«? Tega ni mogoče razveljaviti.`)) return;
-    const poti = (oglas.listing_images || []).map((s) => s.pot);
+    const poti = spajzPodatki.vseDatoteke((oglas.listing_images || []).map((s) => s.pot));
     const { error } = await sb.from('listings').delete().eq('id', oglas.id);
     if (error) {
       sporocilo('Oglasa ni bilo mogoče izbrisati. Poskusi znova.', true);
@@ -74,7 +74,7 @@
     const slika = (oglas.listing_images || []).sort((a, b) => a.vrstni_red - b.vrstni_red)[0];
     const img = document.createElement(slika ? 'img' : 'div');
     if (slika) {
-      img.src = spajzPodatki.slikaUrl(slika.pot);
+      spajzPodatki.mala(img, slika.pot);
       img.alt = '';
       img.loading = 'lazy';
     }

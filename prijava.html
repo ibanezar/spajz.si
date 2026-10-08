@@ -20,6 +20,8 @@
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -96,6 +98,13 @@
       <p class="prijavljen">Tvoj e-naslov: <strong id="prijavljen-kot"></strong>.
         <button type="button" id="gumb-odjava" class="gumb-povezava">Odjava</button></p>
       <p id="povezava-skrbnik" hidden><a href="skrbnik.html">Skrbništvo: potrjevanje in prijave</a></p>
+
+      <details class="izbris-racuna">
+        <summary>Izbris računa</summary>
+        <p>Izbrisali bomo tvoj profil, vse tvoje oglase s slikami in tvoje prijave oglasov.
+          Tega ni mogoče razveljaviti.</p>
+        <button type="button" id="gumb-izbris" class="gumb gumb-drugotni gumb-nevarno">Trajno izbriši račun</button>
+      </details>
     </section>
   </main>
 
@@ -107,10 +116,11 @@
     <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
   <script src="js/prijava.js"></script>
 </body>
 </html>
