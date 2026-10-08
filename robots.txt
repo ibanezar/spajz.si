@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /prijava
+Disallow: /nov-oglas
+Disallow: /moji-oglasi
+Disallow: /skrbnik
+Disallow: /functions/
+
+Sitemap: https://spajz.si/sitemap.xml
