@@ -62,7 +62,9 @@
   async function posodobiGlavo() {
     const povezava = document.querySelector('.glava a[href="prijava.html"]');
     if (!povezava || !(await seja())) return;
-    povezava.textContent = 'Moj profil';
+    document.body.classList.add('prijavljen');
+    povezava.textContent = 'Profil';
+    povezava.setAttribute('aria-label', 'Moj profil');
   }
 
   window.spajzAuth = { seja, profil, jePopoln, varnaPot, zahtevajPrijavo, odjava };

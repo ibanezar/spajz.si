@@ -26,12 +26,17 @@
 <body>
   <a class="preskoci" href="#vsebina">Preskoči na vsebino</a>
   <header class="glava">
-    <a class="logo" href="index.html">Špajz</a>
-    <nav aria-label="Glavni meni">
-      <a href="nov-oglas.html">Objavi oglas</a>
-      <a href="moji-oglasi.html">Moji oglasi</a>
-      <a href="prijava.html">Prijava</a>
-    </nav>
+    <div class="glava-notranja">
+      <a class="logo" href="index.html">
+        <img src="favicon.svg" alt="" width="34" height="34">
+        <span>Špajz</span>
+      </a>
+      <nav class="meni" aria-label="Glavni meni">
+        <a class="le-prijavljen" href="moji-oglasi.html">Moji oglasi</a>
+        <a href="prijava.html">Prijava</a>
+        <a class="gumb gumb-majhen" href="nov-oglas.html">Objavi<span class="le-siroko"> oglas</span></a>
+      </nav>
+    </div>
   </header>
 
   <main id="vsebina">
@@ -56,16 +61,20 @@
         <h1 id="naslov"></h1>
         <p id="cena" class="oglas-cena"></p>
 
-        <dl class="oglas-podatki">
-          <dt>Kraj</dt>
-          <dd id="kraj"></dd>
-          <dt>Prodajalec</dt>
-          <dd id="prodajalec"></dd>
-          <dt>Objavljeno</dt>
-          <dd id="objavljeno"></dd>
-        </dl>
+        <div class="prodajalec">
+          <span id="prodajalec-zacetnica" class="zacetnica" aria-hidden="true"></span>
+          <div>
+            <p class="vizualno-skrito">Prodajalec</p>
+            <p id="prodajalec" class="prodajalec-ime"></p>
+            <p class="prodajalec-kraj">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+              <span id="kraj"></span>
+            </p>
+          </div>
+        </div>
 
         <p id="opis" class="oglas-opis"></p>
+        <p class="pomoc">Objavljeno <span id="objavljeno"></span></p>
 
         <section class="kontakt" aria-labelledby="kontakt-naslov">
           <h2 id="kontakt-naslov">Kontakt</h2>
@@ -110,11 +119,16 @@
   </main>
 
   <footer class="noga">
-    <nav aria-label="Noga">
-      <a href="pravila.html">Pravila oglaševanja</a>
-      <a href="zasebnost.html">Zasebnost</a>
-    </nav>
-    <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
+    <div class="noga-notranja">
+      <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
+      <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
+        ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
+      <nav aria-label="Noga">
+        <a href="nov-oglas.html">Objavi oglas</a>
+        <a href="pravila.html">Pravila oglaševanja</a>
+        <a href="zasebnost.html">Zasebnost</a>
+      </nav>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>

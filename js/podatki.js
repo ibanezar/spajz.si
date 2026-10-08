@@ -11,6 +11,18 @@ window.spajzPodatki = (function () {
     drugo: 'Drugo',
   };
 
+  // Krajša imena za gumbe in kartice
+  const kategorijeKratko = {
+    zelenjava: 'Zelenjava',
+    sadje: 'Sadje',
+    meso: 'Meso',
+    'mleko-jajca': 'Mleko in jajca',
+    med: 'Med',
+    'kruh-peka': 'Kruh in peka',
+    predelano: 'Vloženo in sokovi',
+    drugo: 'Drugo',
+  };
+
   const enote = {
     kg: 'kg',
     kos: 'kos',
@@ -71,5 +83,5 @@ window.spajzPodatki = (function () {
     }
   }
 
-  return { kategorije, enote, doline, cena, datum, slikaUrl, malaPot, vseDatoteke, mala, napolniIzbiro };
+  return { kategorije, kategorijeKratko, enote, doline, cena, datum, slikaUrl, malaPot, vseDatoteke, mala, napolniIzbiro };
 })();

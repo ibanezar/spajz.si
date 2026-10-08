@@ -36,6 +36,7 @@
   $('kategorija').textContent = spajzPodatki.kategorije[oglas.kategorija] || oglas.kategorija;
   $('kraj').textContent = `${oglas.kraj}, ${spajzPodatki.doline[oglas.dolina] || ''}`.replace(/, Drugo$/, '');
   $('prodajalec').textContent = (oglas.profiles && oglas.profiles.ime) || 'Prodajalec';
+  $('prodajalec-zacetnica').textContent = ($('prodajalec').textContent.trim()[0] || 'Š').toUpperCase();
   $('objavljeno').textContent = spajzPodatki.datum(oglas.ustvarjen);
   $('opis').textContent = oglas.opis || '';
   $('opis').hidden = !oglas.opis;

@@ -26,12 +26,17 @@
 <body data-zahteva-prijavo>
   <a class="preskoci" href="#vsebina">Preskoči na vsebino</a>
   <header class="glava">
-    <a class="logo" href="index.html">Špajz</a>
-    <nav aria-label="Glavni meni">
-      <a href="nov-oglas.html">Objavi oglas</a>
-      <a href="moji-oglasi.html">Moji oglasi</a>
-      <a href="prijava.html">Prijava</a>
-    </nav>
+    <div class="glava-notranja">
+      <a class="logo" href="index.html">
+        <img src="favicon.svg" alt="" width="34" height="34">
+        <span>Špajz</span>
+      </a>
+      <nav class="meni" aria-label="Glavni meni">
+        <a class="le-prijavljen" href="moji-oglasi.html">Moji oglasi</a>
+        <a href="prijava.html">Prijava</a>
+        <a class="gumb gumb-majhen" href="nov-oglas.html">Objavi<span class="le-siroko"> oglas</span></a>
+      </nav>
+    </div>
   </header>
 
   <main id="vsebina">
@@ -62,11 +67,16 @@
   </main>
 
   <footer class="noga">
-    <nav aria-label="Noga">
-      <a href="pravila.html">Pravila oglaševanja</a>
-      <a href="zasebnost.html">Zasebnost</a>
-    </nav>
-    <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
+    <div class="noga-notranja">
+      <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
+      <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
+        ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
+      <nav aria-label="Noga">
+        <a href="nov-oglas.html">Objavi oglas</a>
+        <a href="pravila.html">Pravila oglaševanja</a>
+        <a href="zasebnost.html">Zasebnost</a>
+      </nav>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>

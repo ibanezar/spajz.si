@@ -5,20 +5,40 @@
   const NA_STRAN = 24;
   let stran = 0;
   let zahteva = 0; // da starejši odgovor ne povozi novejšega
+  let kategorija = '';
 
-  spajzPodatki.napolniIzbiro($('filter-kategorija'), spajzPodatki.kategorije);
   spajzPodatki.napolniIzbiro($('filter-dolina'), spajzPodatki.doline);
 
   // Filtri iz naslova strani (?q=med&kategorija=med&dolina=saleska)
   const zacetni = new URLSearchParams(location.search);
   $('iskanje').value = zacetni.get('q') || '';
-  if (zacetni.get('kategorija') in spajzPodatki.kategorije) $('filter-kategorija').value = zacetni.get('kategorija');
+  if (zacetni.get('kategorija') in spajzPodatki.kategorije) kategorija = zacetni.get('kategorija');
   if (zacetni.get('dolina') in spajzPodatki.doline) $('filter-dolina').value = zacetni.get('dolina');
+
+  // Kategorije kot gumbi (aria-pressed pove bralniku zaslona, kateri je izbran)
+  function izrisiKategorije() {
+    const skupina = $('kategorije');
+    skupina.replaceChildren();
+    for (const [vrednost, ime] of [['', 'Vse'], ...Object.entries(spajzPodatki.kategorijeKratko)]) {
+      const g = document.createElement('button');
+      g.type = 'button';
+      g.className = 'kategorija';
+      g.textContent = ime;
+      g.setAttribute('aria-pressed', String(vrednost === kategorija));
+      g.addEventListener('click', () => {
+        kategorija = vrednost;
+        izrisiKategorije();
+        nalozi(false);
+      });
+      skupina.append(g);
+    }
+  }
+  izrisiKategorije();
 
   function filtri() {
     return {
       q: $('iskanje').value.trim(),
-      kategorija: $('filter-kategorija').value,
+      kategorija,
       dolina: $('filter-dolina').value,
     };
   }
@@ -37,12 +57,28 @@
     return besede.slice(0, 6).map((b) => b + ':*').join(' & ');
   }
 
+  const SVG = 'http://www.w3.org/2000/svg';
+  function ikonaKraj() {
+    const svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '14');
+    svg.setAttribute('height', '14');
+    svg.setAttribute('aria-hidden', 'true');
+    const pot = document.createElementNS(SVG, 'path');
+    pot.setAttribute('d', 'M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z');
+    pot.setAttribute('fill', 'currentColor');
+    svg.append(pot);
+    return svg;
+  }
+
   function kartica(oglas) {
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.className = 'kartica';
     a.href = 'oglas.html?id=' + encodeURIComponent(oglas.id);
 
+    const okvir = document.createElement('div');
+    okvir.className = 'kartica-slika';
     const slika = (oglas.listing_images || []).sort((x, y) => x.vrstni_red - y.vrstni_red)[0];
     if (slika) {
       const img = document.createElement('img');
@@ -52,26 +88,32 @@
       img.decoding = 'async';
       img.width = 400;
       img.height = 300;
-      a.append(img);
+      okvir.append(img);
     } else {
-      const ni = document.createElement('div');
-      ni.className = 'kartica-brez-slike';
-      ni.textContent = spajzPodatki.kategorije[oglas.kategorija] || '';
-      a.append(ni);
+      const ni = document.createElement('img');
+      ni.src = 'favicon.svg';
+      ni.alt = '';
+      ni.className = 'brez-slike';
+      okvir.append(ni);
     }
+    const oznaka = document.createElement('span');
+    oznaka.className = 'kartica-oznaka';
+    oznaka.textContent = spajzPodatki.kategorijeKratko[oglas.kategorija] || '';
+    okvir.append(oznaka);
 
     const besedilo = document.createElement('div');
     besedilo.className = 'kartica-besedilo';
     const naslov = document.createElement('h2');
     naslov.textContent = oglas.naslov;
     const cena = document.createElement('p');
-    cena.className = 'kartica-cena';
+    cena.className = 'kartica-cena' + (oglas.po_dogovoru ? ' dogovor' : '');
     cena.textContent = spajzPodatki.cena(oglas);
     const kraj = document.createElement('p');
     kraj.className = 'kartica-kraj';
-    kraj.textContent = oglas.kraj;
+    kraj.append(ikonaKraj(), document.createTextNode(oglas.kraj));
     besedilo.append(naslov, cena, kraj);
-    a.append(besedilo);
+
+    a.append(okvir, besedilo);
     li.append(a);
     return li;
   }
@@ -105,6 +147,7 @@
 
     const seznam = $('seznam-oglasov');
     if (!dodaj) seznam.replaceChildren();
+    $('prazno').hidden = true;
 
     if (error) {
       $('stanje').textContent = 'Oglasov trenutno ni mogoče naložiti. Poskusi znova čez trenutek.';
@@ -118,9 +161,11 @@
     const skupaj = seznam.children.length;
     const filtrirano = f.q || f.kategorija || f.dolina;
     if (skupaj === 0) {
-      $('stanje').textContent = filtrirano
-        ? 'Ni oglasov, ki bi ustrezali iskanju. Poskusi z manj filtri.'
-        : 'Oglasov še ni. Bodi prvi in objavi, kar imaš!';
+      $('stanje').textContent = '';
+      $('prazno-besedilo').textContent = filtrirano
+        ? 'Za to iskanje še ni oglasov. Poskusi z drugo besedo ali kategorijo.'
+        : 'Špajz je še prazen. Bodi prvi in ponudi, kar imaš!';
+      $('prazno').hidden = false;
     } else {
       $('stanje').textContent = filtrirano ? `Najdenih oglasov: ${skupaj}${jeVec ? '+' : ''}` : '';
     }
@@ -137,7 +182,6 @@
     clearTimeout(zamik);
     nalozi(false);
   });
-  $('filter-kategorija').addEventListener('change', () => nalozi(false));
   $('filter-dolina').addEventListener('change', () => nalozi(false));
   $('gumb-vec').addEventListener('click', () => {
     stran += 1;
