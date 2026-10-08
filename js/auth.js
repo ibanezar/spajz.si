@@ -27,10 +27,11 @@
     return Boolean(p && p.ime && p.ime.trim() && p.kraj && p.dolina);
   }
 
-  // Dovoli samo preusmeritve na lastne strani (npr. "nov-oglas.html?id=..."),
-  // da povezave za prijavo ni mogoče zlorabiti za preusmeritev drugam.
+  // Dovoli samo preusmeritve na lastne strani (npr. "nov-oglas.html?id=..." ali
+  // "nov-oglas?id=...", ker Cloudflare Pages končnico .html odstrani), da povezave
+  // za prijavo ni mogoče zlorabiti za preusmeritev drugam.
   function varnaPot(pot) {
-    return /^[a-z0-9-]+\.html(\?[\w=&%.-]*)?$/.test(pot || '') ? pot : null;
+    return /^[a-z0-9-]+(\.html)?(\?[\w=&%.-]*)?$/.test(pot || '') ? pot : null;
   }
 
   function naPrijavo() {
