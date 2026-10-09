@@ -5,34 +5,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Špajz: lokalna tržnica</title>
   <meta name="description" content="Lokalna tržnica Zgornje Savinjske in Šaleške doline. Zelenjava, sadje, med, jajca in domači izdelki neposredno od pridelovalcev.">
+  <meta name="theme-color" content="#2f6b3a">
+  <meta property="og:site_name" content="Špajz">
+  <meta property="og:locale" content="sl_SI">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Špajz: lokalna tržnica">
+  <meta property="og:description" content="Lokalna tržnica Zgornje Savinjske in Šaleške doline. Zelenjava, sadje, med, jajca in domači izdelki neposredno od pridelovalcev.">
+  <meta property="og:image" content="https://spajz.si/img/deljenje.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Špajz, lokalna tržnica">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="preskoci" href="#vsebina">Preskoči na vsebino</a>
   <header class="glava">
-    <a class="logo" href="index.html">Špajz</a>
-    <nav aria-label="Glavni meni">
-      <a href="nov-oglas.html">Objavi oglas</a>
-      <a href="moji-oglasi.html">Moji oglasi</a>
-      <a href="prijava.html">Prijava</a>
-    </nav>
+    <div class="glava-notranja">
+      <a class="logo" href="index.html">
+        <img src="favicon.svg" alt="" width="34" height="34">
+        <span>Špajz</span>
+      </a>
+      <nav class="meni" aria-label="Glavni meni">
+        <a class="le-prijavljen" href="moji-oglasi.html">Moji oglasi</a>
+        <a href="prijava.html">Prijava</a>
+        <a class="gumb gumb-majhen" href="nov-oglas.html">Objavi<span class="le-siroko"> oglas</span></a>
+      </nav>
+    </div>
   </header>
 
   <main id="vsebina">
-    <h1>Špajz</h1>
-    <p>Stran je v pripravi.</p>
+    <section class="uvodni-pas">
+      <div class="uvodni-besedilo">
+        <p class="nadnaslov">Lokalna tržnica · Zgornja Savinjska in Šaleška dolina</p>
+        <h1>Domače dobrote <em>iz domače doline</em></h1>
+        <p class="uvod">Zelenjava, sadje, med, jajca in domači izdelki, neposredno od ljudi, ki jih pridelajo.</p>
+
+        <form id="filtri" class="iskalnik" role="search">
+          <label for="iskanje" class="vizualno-skrito">Išči po oglasih</label>
+          <svg class="ikona-iskanje" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input id="iskanje" name="q" type="search" placeholder="Med, jajca, krompir …" autocomplete="off">
+          <button type="submit" class="gumb">Išči</button>
+        </form>
+
+        <ul class="obljube">
+          <li>Brez provizij</li>
+          <li>Neposredno od pridelovalca</li>
+          <li>Lokalno in sezonsko</li>
+        </ul>
+      </div>
+      <svg class="vejica" viewBox="0 0 200 320" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M100 312C98 240 102 170 118 100 126 64 140 34 156 10"/>
+          <path d="M104 250c-24-6-44-24-52-50 26 2 46 20 52 50z"/>
+          <path d="M106 214c22-10 44-10 64 2-20 14-42 14-64-2z"/>
+          <path d="M110 170c-22-10-36-30-38-56 22 8 36 28 38 56z"/>
+          <path d="M116 132c18-14 40-18 60-10-16 18-38 22-60 10z"/>
+          <path d="M126 92c-16-14-24-34-20-56 18 14 24 34 20 56z"/>
+          <path d="M136 66c14-14 32-20 50-16-12 16-30 22-50 16z"/>
+          <path d="M104 250l-28-26M106 214l34-4M110 170l-20-32M116 132l34-6M126 92l-10-30M136 66l26-10" stroke-width="1"/>
+        </g>
+      </svg>
+    </section>
+
+    <div class="naslov-razdelka">
+      <p class="nadnaslov">Ta teden v špajzu</p>
+      <h2>Sveže ponudbe</h2>
+    </div>
+
+    <div class="izbira">
+      <div id="kategorije" class="kategorije" role="group" aria-label="Kategorija"></div>
+      <div class="polje polje-dolina">
+        <label for="filter-dolina" class="vizualno-skrito">Dolina</label>
+        <select id="filter-dolina" name="dolina">
+          <option value="">Vse doline</option>
+        </select>
+      </div>
+    </div>
+
+    <p id="stanje" class="stanje" role="status" aria-live="polite"></p>
+    <ul id="seznam-oglasov" class="seznam-oglasov"></ul>
+    <div id="prazno" class="prazno" hidden>
+      <img src="favicon.svg" alt="" width="72" height="72">
+      <p id="prazno-besedilo"></p>
+      <a class="gumb" href="nov-oglas.html">Objavi oglas</a>
+    </div>
+    <button type="button" id="gumb-vec" class="gumb gumb-drugotni gumb-vec" hidden>Pokaži več oglasov</button>
+
+    <section class="kako" aria-labelledby="kako-naslov">
+      <p class="nadnaslov">Preprosto in brez posrednikov</p>
+      <h2 id="kako-naslov">Kako deluje Špajz</h2>
+      <ol class="koraki">
+        <li>
+          <span class="korak-st" aria-hidden="true">01</span>
+          <h3>Poišči</h3>
+          <p>Prebrskaj, kaj sosedje ponujajo ta teden v tvoji dolini.</p>
+        </li>
+        <li>
+          <span class="korak-st" aria-hidden="true">02</span>
+          <h3>Dogovori se</h3>
+          <p>Prijavi se, poglej kontakt in pokliči ali piši prodajalcu.</p>
+        </li>
+        <li>
+          <span class="korak-st" aria-hidden="true">03</span>
+          <h3>Prevzemi</h3>
+          <p>Prevzem in plačilo urediš neposredno, brez posrednikov in provizij.</p>
+        </li>
+      </ol>
+      <p class="kako-prodaja">Imaš kaj za prodati? <a href="nov-oglas.html">Objavi oglas</a>, brezplačno.</p>
+    </section>
   </main>
 
   <footer class="noga">
-    <nav aria-label="Noga">
-      <a href="pravila.html">Pravila oglaševanja</a>
-      <a href="zasebnost.html">Zasebnost</a>
-    </nav>
-    <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
+    <div class="noga-notranja">
+      <div class="noga-znamka">
+        <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
+        <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
+          ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
+      </div>
+      <nav aria-labelledby="noga-trznica">
+        <p id="noga-trznica" class="noga-naslov">Tržnica</p>
+        <a href="index.html">Vsi oglasi</a>
+        <a href="nov-oglas.html">Objavi oglas</a>
+        <a href="moji-oglasi.html">Moji oglasi</a>
+      </nav>
+      <nav aria-labelledby="noga-info">
+        <p id="noga-info" class="noga-naslov">Informacije</p>
+        <a href="pravila.html">Pravila oglaševanja</a>
+        <a href="zasebnost.html">Zasebnost</a>
+      </nav>
+    </div>
+    <p class="noga-dno">Narejeno v Savinjski in Šaleški dolini.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
+  <script src="js/naslovnica.js"></script>
 </body>
 </html>

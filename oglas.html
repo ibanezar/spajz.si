@@ -5,34 +5,147 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Oglas | Špajz</title>
   <meta name="description" content="Oglas na Špajzu, lokalni tržnici Zgornje Savinjske in Šaleške doline.">
+  <meta name="theme-color" content="#2f6b3a">
+  <meta property="og:site_name" content="Špajz">
+  <meta property="og:locale" content="sl_SI">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Oglas | Špajz">
+  <meta property="og:description" content="Oglas na Špajzu, lokalni tržnici Zgornje Savinjske in Šaleške doline.">
+  <meta property="og:image" content="https://spajz.si/img/deljenje.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Špajz, lokalna tržnica">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="preskoci" href="#vsebina">Preskoči na vsebino</a>
   <header class="glava">
-    <a class="logo" href="index.html">Špajz</a>
-    <nav aria-label="Glavni meni">
-      <a href="nov-oglas.html">Objavi oglas</a>
-      <a href="moji-oglasi.html">Moji oglasi</a>
-      <a href="prijava.html">Prijava</a>
-    </nav>
+    <div class="glava-notranja">
+      <a class="logo" href="index.html">
+        <img src="favicon.svg" alt="" width="34" height="34">
+        <span>Špajz</span>
+      </a>
+      <nav class="meni" aria-label="Glavni meni">
+        <a class="le-prijavljen" href="moji-oglasi.html">Moji oglasi</a>
+        <a href="prijava.html">Prijava</a>
+        <a class="gumb gumb-majhen" href="nov-oglas.html">Objavi<span class="le-siroko"> oglas</span></a>
+      </nav>
+    </div>
   </header>
 
   <main id="vsebina">
-    <h1>Oglas</h1>
-    <p>Stran je v pripravi.</p>
+    <p id="nalaganje" class="stanje" role="status">Nalagam oglas …</p>
+
+    <section id="ni-oglasa" hidden>
+      <h1>Oglas ni na voljo</h1>
+      <p>Oglas ne obstaja, je potekel ali pa ga je prodajalec umaknil.</p>
+      <p><a href="index.html">Nazaj na vse oglase</a></p>
+    </section>
+
+    <article id="oglas" class="oglas" hidden>
+      <p id="opomba" class="sporocilo napaka" hidden></p>
+
+      <div id="galerija" class="galerija" hidden>
+        <img id="glavna-slika" class="glavna-slika" src="" alt="">
+        <ul id="slicice" class="slicice"></ul>
+      </div>
+
+      <div class="oglas-podrobnosti">
+        <p id="kategorija" class="oglas-kategorija"></p>
+        <h1 id="naslov"></h1>
+        <p id="cena" class="oglas-cena"></p>
+
+        <div class="prodajalec">
+          <span id="prodajalec-zacetnica" class="zacetnica" aria-hidden="true"></span>
+          <div>
+            <p class="vizualno-skrito">Prodajalec</p>
+            <p id="prodajalec" class="prodajalec-ime"></p>
+            <p class="prodajalec-kraj">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+              <span id="kraj"></span>
+            </p>
+          </div>
+        </div>
+
+        <p id="opis" class="oglas-opis"></p>
+        <p class="pomoc">Objavljeno <span id="objavljeno"></span></p>
+
+        <section class="kontakt" aria-labelledby="kontakt-naslov">
+          <h2 id="kontakt-naslov">Kontakt</h2>
+          <button type="button" id="gumb-kontakt" class="gumb" hidden>Pokaži kontakt</button>
+          <a id="kontakt-prijava" class="gumb" href="prijava.html" hidden>Prijavi se za ogled kontakta</a>
+          <p id="kontakt-napaka" class="sporocilo napaka" hidden>Kontakta ni bilo mogoče naložiti. Poskusi znova.</p>
+          <dl id="kontakt-podatki" class="oglas-podatki" hidden></dl>
+          <p class="pomoc">Dogovor o prevzemu in plačilu poteka neposredno s prodajalcem.</p>
+        </section>
+
+        <p id="lastnik" class="sporocilo" hidden>To je tvoj oglas.
+          <a id="lastnik-uredi" href="nov-oglas.html">Uredi oglas</a> ·
+          <a href="moji-oglasi.html">Moji oglasi</a></p>
+
+        <details id="prijava-oglasa" class="prijava-oglasa" hidden>
+          <summary>Prijavi neprimeren oglas</summary>
+          <p id="prijava-neprijavljen" hidden><a href="prijava.html">Prijavi se</a>, da lahko oglas prijaviš.</p>
+          <form id="obrazec-prijava" class="obrazec" hidden>
+            <div class="polje">
+              <label for="prijava-razlog">Razlog</label>
+              <select id="prijava-razlog" required>
+                <option value="">Izberi</option>
+                <option>Prepovedan izdelek (alkohol, žive živali, gobe ali zelišča brez dokazil)</option>
+                <option>Zavajajoč ali lažen oglas</option>
+                <option>Goljufija ali neželena pošta</option>
+                <option>Neprimerna vsebina ali slike</option>
+                <option>Drugo</option>
+              </select>
+            </div>
+            <div class="polje">
+              <label for="prijava-opomba">Opomba <span class="neobvezno">(neobvezno)</span></label>
+              <textarea id="prijava-opomba" rows="3" maxlength="300"></textarea>
+            </div>
+            <button type="submit" class="gumb gumb-drugotni">Pošlji prijavo</button>
+          </form>
+          <p id="prijava-izid" class="sporocilo" role="status" hidden></p>
+        </details>
+
+        <p><a href="index.html">Nazaj na vse oglase</a></p>
+      </div>
+    </article>
   </main>
 
   <footer class="noga">
-    <nav aria-label="Noga">
-      <a href="pravila.html">Pravila oglaševanja</a>
-      <a href="zasebnost.html">Zasebnost</a>
-    </nav>
-    <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
+    <div class="noga-notranja">
+      <div class="noga-znamka">
+        <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
+        <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
+          ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
+      </div>
+      <nav aria-labelledby="noga-trznica">
+        <p id="noga-trznica" class="noga-naslov">Tržnica</p>
+        <a href="index.html">Vsi oglasi</a>
+        <a href="nov-oglas.html">Objavi oglas</a>
+        <a href="moji-oglasi.html">Moji oglasi</a>
+      </nav>
+      <nav aria-labelledby="noga-info">
+        <p id="noga-info" class="noga-naslov">Informacije</p>
+        <a href="pravila.html">Pravila oglaševanja</a>
+        <a href="zasebnost.html">Zasebnost</a>
+      </nav>
+    </div>
+    <p class="noga-dno">Narejeno v Savinjski in Šaleški dolini.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
+  <script src="js/oglas.js"></script>
 </body>
 </html>

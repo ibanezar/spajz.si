@@ -5,34 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Moji oglasi | Špajz</title>
   <meta name="description" content="Uredi, podaljšaj ali odstrani svoje oglase.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#2f6b3a">
+  <meta property="og:site_name" content="Špajz">
+  <meta property="og:locale" content="sl_SI">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moji oglasi | Špajz">
+  <meta property="og:description" content="Uredi, podaljšaj ali odstrani svoje oglase.">
+  <meta property="og:image" content="https://spajz.si/img/deljenje.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Špajz, lokalna tržnica">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-zahteva-prijavo>
   <a class="preskoci" href="#vsebina">Preskoči na vsebino</a>
   <header class="glava">
-    <a class="logo" href="index.html">Špajz</a>
-    <nav aria-label="Glavni meni">
-      <a href="nov-oglas.html">Objavi oglas</a>
-      <a href="moji-oglasi.html">Moji oglasi</a>
-      <a href="prijava.html">Prijava</a>
-    </nav>
+    <div class="glava-notranja">
+      <a class="logo" href="index.html">
+        <img src="favicon.svg" alt="" width="34" height="34">
+        <span>Špajz</span>
+      </a>
+      <nav class="meni" aria-label="Glavni meni">
+        <a class="le-prijavljen" href="moji-oglasi.html">Moji oglasi</a>
+        <a href="prijava.html">Prijava</a>
+        <a class="gumb gumb-majhen" href="nov-oglas.html">Objavi<span class="le-siroko"> oglas</span></a>
+      </nav>
+    </div>
   </header>
 
   <main id="vsebina">
     <h1>Moji oglasi</h1>
-    <p>Stran je v pripravi.</p>
+    <p id="sporocilo" class="sporocilo" role="status" aria-live="polite" hidden></p>
+    <div id="vsebina-mojih" hidden>
+      <p><a class="gumb" href="nov-oglas.html">Objavi nov oglas</a></p>
+      <p id="stanje" class="stanje"></p>
+      <ul id="seznam-mojih" class="seznam-mojih"></ul>
+    </div>
   </main>
 
   <footer class="noga">
-    <nav aria-label="Noga">
-      <a href="pravila.html">Pravila oglaševanja</a>
-      <a href="zasebnost.html">Zasebnost</a>
-    </nav>
-    <p>Špajz, lokalna tržnica Zgornje Savinjske in Šaleške doline.</p>
+    <div class="noga-notranja">
+      <div class="noga-znamka">
+        <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
+        <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
+          ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
+      </div>
+      <nav aria-labelledby="noga-trznica">
+        <p id="noga-trznica" class="noga-naslov">Tržnica</p>
+        <a href="index.html">Vsi oglasi</a>
+        <a href="nov-oglas.html">Objavi oglas</a>
+        <a href="moji-oglasi.html">Moji oglasi</a>
+      </nav>
+      <nav aria-labelledby="noga-info">
+        <p id="noga-info" class="noga-naslov">Informacije</p>
+        <a href="pravila.html">Pravila oglaševanja</a>
+        <a href="zasebnost.html">Zasebnost</a>
+      </nav>
+    </div>
+    <p class="noga-dno">Narejeno v Savinjski in Šaleški dolini.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/podatki.js"></script>
+  <script src="js/moji-oglasi.js"></script>
 </body>
 </html>
