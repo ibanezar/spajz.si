@@ -99,7 +99,6 @@
     const oznaka = document.createElement('span');
     oznaka.className = 'kartica-oznaka';
     oznaka.textContent = spajzPodatki.kategorijeKratko[oglas.kategorija] || '';
-    okvir.append(oznaka);
 
     const besedilo = document.createElement('div');
     besedilo.className = 'kartica-besedilo';
@@ -111,7 +110,7 @@
     const kraj = document.createElement('p');
     kraj.className = 'kartica-kraj';
     kraj.append(ikonaKraj(), document.createTextNode(oglas.kraj));
-    besedilo.append(naslov, cena, kraj);
+    besedilo.append(oznaka, naslov, cena, kraj);
 
     a.append(okvir, besedilo);
     li.append(a);

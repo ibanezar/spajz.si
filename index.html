@@ -21,6 +21,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://wrgrjzugitphlbrqibfc.supabase.co" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -41,20 +42,45 @@
 
   <main id="vsebina">
     <section class="uvodni-pas">
-      <h1>Domače dobrote<br><span>iz domače doline</span></h1>
-      <p class="uvod">Zelenjava, sadje, med, jajca in domači izdelki iz Zgornje Savinjske in Šaleške doline.
-        Neposredno od ljudi, ki jih pridelajo.</p>
+      <div class="uvodni-besedilo">
+        <p class="nadnaslov">Lokalna tržnica · Zgornja Savinjska in Šaleška dolina</p>
+        <h1>Domače dobrote <em>iz domače doline</em></h1>
+        <p class="uvod">Zelenjava, sadje, med, jajca in domači izdelki, neposredno od ljudi, ki jih pridelajo.</p>
 
-      <form id="filtri" class="iskalnik" role="search">
-        <label for="iskanje" class="vizualno-skrito">Išči po oglasih</label>
-        <svg class="ikona-iskanje" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/>
-          <path d="M20 20l-4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-        </svg>
-        <input id="iskanje" name="q" type="search" placeholder="Med, jajca, krompir …" autocomplete="off">
-        <button type="submit" class="gumb">Išči</button>
-      </form>
+        <form id="filtri" class="iskalnik" role="search">
+          <label for="iskanje" class="vizualno-skrito">Išči po oglasih</label>
+          <svg class="ikona-iskanje" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input id="iskanje" name="q" type="search" placeholder="Med, jajca, krompir …" autocomplete="off">
+          <button type="submit" class="gumb">Išči</button>
+        </form>
+
+        <ul class="obljube">
+          <li>Brez provizij</li>
+          <li>Neposredno od pridelovalca</li>
+          <li>Lokalno in sezonsko</li>
+        </ul>
+      </div>
+      <svg class="vejica" viewBox="0 0 200 320" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M100 312C98 240 102 170 118 100 126 64 140 34 156 10"/>
+          <path d="M104 250c-24-6-44-24-52-50 26 2 46 20 52 50z"/>
+          <path d="M106 214c22-10 44-10 64 2-20 14-42 14-64-2z"/>
+          <path d="M110 170c-22-10-36-30-38-56 22 8 36 28 38 56z"/>
+          <path d="M116 132c18-14 40-18 60-10-16 18-38 22-60 10z"/>
+          <path d="M126 92c-16-14-24-34-20-56 18 14 24 34 20 56z"/>
+          <path d="M136 66c14-14 32-20 50-16-12 16-30 22-50 16z"/>
+          <path d="M104 250l-28-26M106 214l34-4M110 170l-20-32M116 132l34-6M126 92l-10-30M136 66l26-10" stroke-width="1"/>
+        </g>
+      </svg>
     </section>
+
+    <div class="naslov-razdelka">
+      <p class="nadnaslov">Ta teden v špajzu</p>
+      <h2>Sveže ponudbe</h2>
+    </div>
 
     <div class="izbira">
       <div id="kategorije" class="kategorije" role="group" aria-label="Kategorija"></div>
@@ -76,20 +102,21 @@
     <button type="button" id="gumb-vec" class="gumb gumb-drugotni gumb-vec" hidden>Pokaži več oglasov</button>
 
     <section class="kako" aria-labelledby="kako-naslov">
+      <p class="nadnaslov">Preprosto in brez posrednikov</p>
       <h2 id="kako-naslov">Kako deluje Špajz</h2>
       <ol class="koraki">
         <li>
-          <span class="korak-st" aria-hidden="true">1</span>
+          <span class="korak-st" aria-hidden="true">01</span>
           <h3>Poišči</h3>
           <p>Prebrskaj, kaj sosedje ponujajo ta teden v tvoji dolini.</p>
         </li>
         <li>
-          <span class="korak-st" aria-hidden="true">2</span>
+          <span class="korak-st" aria-hidden="true">02</span>
           <h3>Dogovori se</h3>
           <p>Prijavi se, poglej kontakt in pokliči ali piši prodajalcu.</p>
         </li>
         <li>
-          <span class="korak-st" aria-hidden="true">3</span>
+          <span class="korak-st" aria-hidden="true">03</span>
           <h3>Prevzemi</h3>
           <p>Prevzem in plačilo urediš neposredno, brez posrednikov in provizij.</p>
         </li>
@@ -100,15 +127,24 @@
 
   <footer class="noga">
     <div class="noga-notranja">
-      <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
-      <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
-        ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
-      <nav aria-label="Noga">
+      <div class="noga-znamka">
+        <p class="noga-logo"><img src="favicon.svg" alt="" width="28" height="28"> Špajz</p>
+        <p>Lokalna tržnica Zgornje Savinjske in Šaleške doline. Domače dobrote neposredno od ljudi,
+          ki jih pridelajo. <em>Špajz</em> je narečna beseda za shrambo.</p>
+      </div>
+      <nav aria-labelledby="noga-trznica">
+        <p id="noga-trznica" class="noga-naslov">Tržnica</p>
+        <a href="index.html">Vsi oglasi</a>
         <a href="nov-oglas.html">Objavi oglas</a>
+        <a href="moji-oglasi.html">Moji oglasi</a>
+      </nav>
+      <nav aria-labelledby="noga-info">
+        <p id="noga-info" class="noga-naslov">Informacije</p>
         <a href="pravila.html">Pravila oglaševanja</a>
         <a href="zasebnost.html">Zasebnost</a>
       </nav>
     </div>
+    <p class="noga-dno">Narejeno v Savinjski in Šaleški dolini.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous"></script>
