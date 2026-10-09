@@ -56,6 +56,8 @@ window.spajzPodatki = (function () {
 
   // Javni URL slike v vedru "oglasi"
   function slikaUrl(pot) {
+    // Izmišljeni oglasi (supabase/demo/) imajo slike v projektu, ne v shrambi.
+    if (pot.startsWith('demo/')) return 'img/demo/' + pot.slice(5);
     return window.sb.storage.from('oglasi').getPublicUrl(pot).data.publicUrl;
   }
 

@@ -77,7 +77,11 @@ async function oglas(context, url) {
   const opis = skrajsaj(`${cena} · ${kraj}. ${o.opis || ''}`.trim(), 200);
   const slike = (o.listing_images || [])
     .sort((a, b) => a.vrstni_red - b.vrstni_red)
-    .map((s) => `${context.env.SUPABASE_URL}/storage/v1/object/public/oglasi/${s.pot.split('/').map(encodeURIComponent).join('/')}`);
+    .map((s) =>
+      s.pot.startsWith('demo/')
+        ? `${url.origin}/img/demo/${encodeURIComponent(s.pot.slice(5))}` // izmišljeni oglasi
+        : `${context.env.SUPABASE_URL}/storage/v1/object/public/oglasi/${s.pot.split('/').map(encodeURIComponent).join('/')}`
+    );
 
   const nastavi = (vrednost) => ({
     element(el) {
